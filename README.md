@@ -1,4 +1,4 @@
-![Flash Entregas logo](public/images/logo.jpg)
+![Flash Entregas logo](public/images/logo_es.png)
 
 # Flash Entregas
 

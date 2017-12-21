@@ -1,8 +1,21 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+a {
+  color: #00b7ff;
 }
 
-a {
-  color: #00B7FF;
+form {
+  padding: 7px;
+}
+
+.parallax-container {
+  max-width: 100%;
+  height: auto;
+}
+
+.parallax {
+  max-width: 100%;
+  height: auto;
+}
+
+.input-field input[type="text"]:focus + label {
+  color: orange;
 }

@@ -20,7 +20,7 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script src="/home/alessandro/flash-entregas/homeScripts.js"></script>
+    <script src="homeScripts.js"></script>
     <title>Flash Entregas</title>
 </head>
 
@@ -30,10 +30,10 @@
 
         <!-- Navbar section-->
         <nav>
-            <div class="container grey lighten-2">
+            <div class="container">
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo">
-                        <img style="padding: 10px" src="images/logo_100px.png">
+                        <img id="flash-logo-peq" src="images/logo_100px.png">
                     </a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                         <li>
@@ -67,7 +67,7 @@
     <main>
         <div class="parallax-container">
             <div class="parallax">
-                <img src="images/image_1440.jpg" style="display:block; transform: translated3d(-50%,100px, 0px);">
+                <img src="images/image_1440.jpg" id="img-parallax">
             </div>
         </div>
 
@@ -82,6 +82,42 @@
                 </div>
                 <div class="col s6">
                     <h2>Cadastre-se</h2>
+
+                    <for action="#">
+                        Nome:
+                        <br>
+                        <input type="text" name="nome">
+                        <br> Sobrenome:
+                        <br>
+                        <input type="text" name="sobrenome">
+                        <br> Email:
+                        <br>
+                        <input type="email" name="email" class="validate">
+                        <br>Senha:
+                        <br>
+                        <input type="password" name="password">
+                        <br> Data de nascimento:
+                        <br>
+                        <input type="text" class="datepicker">
+                        <br>
+                        <br>
+
+                        <input class="with-gap" name="gender" type="radio" id="gender1">
+                        <label for="gender1">Maculino </label>
+                        <input class="with-gap" name="gender" type="radio" id="gender2">
+                        <label for="gender2">Feminino </label>
+                        <input class="with-gap" name="gender" type="radio" id="gender3">
+                        <label for="gender3">Outro</label>
+                        <br>
+                        <br>
+                        <button type="submit" class="btn waves-effect waves-light" action="#">Cadastrar
+                            <i class="material-icons right">send</i>
+                        </button>
+
+
+                        </form>
+
+
 
                 </div>
             </div>

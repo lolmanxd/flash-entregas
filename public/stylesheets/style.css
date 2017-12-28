@@ -2,13 +2,8 @@ a {
   color: #00b7ff;
 }
 
-form {
-  padding: 7px;
-}
-
 .parallax-container {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
 }
 
 .parallax {
@@ -16,6 +11,6 @@ form {
   height: auto;
 }
 
-.input-field input[type="text"]:focus + label {
-  color: orange;
+.input-field.black-text {
+  height: 64px;
 }

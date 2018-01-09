@@ -73,29 +73,29 @@
 
         <div class="section white">
             <div class="row container">
-                <div class="col s6">
+                <div class="col s12 m6">
                     <h2>Bem vindo!</h2>
                     <p>A Flash Entregas está presente em toda a região nordesde e em constante expansão para as demais regiões!
                         Aguarde para mais novidades.
                     </p>
 
                 </div>
-                <div class="col s6">
+                <div class="col s12 m6">
                     <h2>Cadastre-se</h2>
 
                     <for action="#">
                         Nome:
                         <br>
-                        <input type="text" name="nome">
+                        <input type="text" name="nome" class="validate">
                         <br> Sobrenome:
                         <br>
-                        <input type="text" name="sobrenome">
+                        <input type="text" name="sobrenome" class="validate">
                         <br> Email:
                         <br>
                         <input type="email" name="email" class="validate">
                         <br>Senha:
                         <br>
-                        <input type="password" name="password">
+                        <input type="password" name="password" class="validate">
                         <br> Data de nascimento:
                         <br>
                         <input type="text" class="datepicker">
@@ -113,20 +113,37 @@
                         <button type="submit" class="btn waves-effect waves-light" action="#">Cadastrar
                             <i class="material-icons right">send</i>
                         </button>
-
-
                         </form>
-
-
-
                 </div>
             </div>
         </div>
 
     </main>
-
-
-
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col m6 s12">
+                    <h5 class="white-text">Devs:</h5>
+                    <p class="grey-text text-lighten-4">Alessandro Lima</p>
+                    <p class="grey-text text-lighten-4">Anderson Silva</p>
+                </div>
+                <div class="col m6 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li>
+                            <a class="grey-text text-lighten-3" href="https://github.com/spider8/flash-entregas.git">GitHub</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018 Copyright, All rights reserved.
+                <a class="grey-text text-lighten-4 right" href="#!">MIT License.</a>
+            </div>
+        </div>
+    </footer>
 </body>
 
 </html>

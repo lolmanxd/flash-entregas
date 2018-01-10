@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/icon.png" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!--Import jQuery before materialize.js-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Flash Entregas</title>
+    <script>
+        $(document).ready(function () {
+            $(".button-collapse").sideNav();
+        });
+    </script>
+    <style>
+        main {
+            height: 532px;
+            border: o;
+        }
+
+        header,
+        main,
+        footer {
+            padding-left: 300px;
+        }
+
+        @media only screen and (max-width: 992px) {
+            header,
+            main,
+            footer {
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="blue-grey darken-4">
+            <div class="nav-wrapper">
+                <a href="#" data-activates="nav-mobile" class="button-collapse full hide-on-large-only">
+                    <i class="material-icons">menu</i>
+                </a>
+                <a class="page-title brand-logo center">Flash Entregas</a>
+                <ul class="right">
+                    <li>
+                        <a href="">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <ul id="nav-mobile" class="side-nav fixed">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="https://images.adsttc.com/media/images/517d/45a3/b3fc/4b83/4200/0014/large_jpg/IMG_6138.jpg">
+                    </div>
+                    <a href="#!user">
+                        <img class="circle" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111863/profile/profile-512.jpg">
+                    </a>
+                    <a href="#!name">
+                        <span class="white-text name">John Doe</span>
+                    </a>
+                    <a href="#!email">
+                        <span class="white-text email">jdandturk@gmail.com</span>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <a href="#!">
+                    <i class="material-icons">cloud</i>First Link With Icon</a>
+            </li>
+            <li>
+                <a href="#!">Second Link</a>
+            </li>
+            <li>
+                <div class="divider"></div>
+            </li>
+            <li>
+                <a class="subheader">Subheader</a>
+            </li>
+            <li>
+                <a class="waves-effect" href="#!">Third Link With Waves</a>
+            </li>
+        </ul>
+    </header>
+    <main class="">
+        Conteudo
+    </main>
+    <footer class="page-footer blue-grey darken-4">
+        <div class="footer-copyright">
+            <div class="container">
+                © 2018 Copyright, All rights reserved.
+                <a class="grey-text text-lighten-4 right" href="#!">MIT License.</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

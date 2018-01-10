@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="images/icon.png" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -22,6 +21,42 @@
 
     <script src="homeScripts.js"></script>
     <title>Flash Entregas</title>
+    <style>
+        a {
+            color: #00b7ff;
+        }
+
+        .parallax-container {
+            width: 100%;
+        }
+
+        .parallax {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .input-field.black-text {
+            height: 64px;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $(document).ready(function () {
+                $(".parallax").parallax();
+                $("nav").addClass("grey lighten-2");
+                $("#flash-logo-peq").css("margin-top", "5px");
+
+                $(".datepicker").pickadate({
+                    selectMonths: true, // Creates a dropdown to control month
+                    selectYears: 15, // Creates a dropdown of 15 years to control year,
+                    today: "Hoje",
+                    clear: "Limpar",
+                    close: "Ok",
+                    closeOnSelect: false // Close upon selecting a date,
+                });
+            });
+        })
+    </script>
 </head>
 
 <body>
@@ -40,7 +75,7 @@
                             <form action="">
                                 <div class="input-field black-text">
                                     <input id="email" type="email" class="validate">
-                                    <label for="email">e-mail</label>
+                                    <label for="email">E-mail</label>
                                 </div>
                             </form>
                         </li>
@@ -49,7 +84,7 @@
                             <form action="">
                                 <div class="input-field black-text ">
                                     <input id="password" type="password" class="validate">
-                                    <label for="password">senha</label>
+                                    <label for="password">Senha</label>
                                 </div>
                             </form>
                         </li>

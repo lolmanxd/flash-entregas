@@ -70,27 +70,21 @@
                     <a href="#" class="brand-logo">
                         <img id="flash-logo-peq" src="images/logo_100px.png">
                     </a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <ul id="nav-mobile" class="right">
                         <li>
-                            <form action="">
-                                <div class="input-field black-text">
-                                    <input id="email" type="email" class="validate">
-                                    <label for="email">E-mail</label>
+                            <form action="/login.html" method="post" class="valign-wrapper">
+                                <div class="left">
+                                    <div class="input-field black-text left">
+                                        <input id="email" type="email" name="email" class="validate">
+                                        <label for="email">E-mail</label>
+                                    </div>
+                                    <div class="input-field black-text right">
+                                        <input id="password" type="password" name="senha" class="validate">
+                                        <label for="password">Senha</label>
+                                    </div>
                                 </div>
+                                <button class="waves-effect waves-light orange btn right" type="submit">login</button>
                             </form>
-                        </li>
-
-                        <li>
-                            <form action="">
-                                <div class="input-field black-text ">
-                                    <input id="password" type="password" class="validate">
-                                    <label for="password">Senha</label>
-                                </div>
-                            </form>
-                        </li>
-
-                        <li>
-                            <a class="waves-effect waves-light orange btn">login</a>
                         </li>
                     </ul>
                 </div>
@@ -118,7 +112,7 @@
                 <div class="col s12 m6">
                     <h2>Cadastre-se</h2>
 
-                    <for action="#">
+                    <for action="/login" method="post">
                         Nome:
                         <br>
                         <input type="text" name="nome" class="validate">

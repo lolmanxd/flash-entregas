@@ -1,0 +1,56 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    link(rel="icon" type="image/png" href="images/icon.png")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    // Compiled and minified CSS
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css")
+    // Import jQuery before materialize.js
+    script(type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js")
+    // Compiled and minified JavaScript
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js")
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    title Flash Entregas
+    
+    style.
+      main {
+      height: 532px;
+      border: o;
+      }
+      
+      header,
+      main,
+      footer {
+      padding-left: 300px;
+      }
+  
+  body
+    header
+      nav.blue-grey.darken-4
+        .nav-wrapper
+          a.page-title.brand-logo.center Flash Entregas
+          ul.right
+            li
+              a(href="")
+                | Logout
+      ul#nav-mobile.side-nav.fixed
+        li
+          .user-view
+            .background
+              img(src="https://images.adsttc.com/media/images/517d/45a3/b3fc/4b83/4200/0014/large_jpg/IMG_6138.jpg")
+            a(href="#!user")
+              img.circle(src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111863/profile/profile-512.jpg")
+            a(href="#!name")
+              span.white-text.name John Doe
+            a(href="#!email")
+              span.white-text.email jdandturk@gmail.com
+          include sidemenu-adm.pug
+    main
+      | #{main}
+    footer.page-footer.blue-grey.darken-4
+      .footer-copyright
+        .container
+          | © 2018 Copyright, All rights reserved.
+          a.grey-text.text-lighten-4.right(href="#!") MIT License.

@@ -1,46 +1,44 @@
-var express = require("express");
-var path = require("path");
-var favicon = require("serve-favicon");
-var logger = require("morgan");
-var cookieParser = require("cookie-parser");
+const path = require("path");
+var mysql = require("mysql");
 var bodyParser = require("body-parser");
 
-var index = require("./routes/index");
-var users = require("./routes/users");
+const express = require("express");
+const app = express();
 
-var app = express();
+var db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "root",
+  database: "login"
+});
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "jade");
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger("dev"));
+app.set("views", "views/");
+app.set("view engine", "pug");
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-app.use("/", index);
-app.use("/users", users);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error("Not Found");
-  err.status = 404;
-  next(err);
+app.get("/", function(req, res) {
+  res.sendFile(path.resolve("public/login.html"));
 });
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+app.post("/login.html", (req, res) => {
+  const { email, senha } = req.body;
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
+  db.query(
+    `select * from user where nome = "${email}" and password = "${senha}"`,
+    function(error, results, fields) {
+      if (error) throw error;
+      console.log("The solution is: ", results);
+    }
+  );
+  res.send("Ola");
 });
 
-module.exports = app;
+app.get("/dashboard.html", function(req, res) {
+  res.render("dashboard", { main: "Ola" });
+});
+
+app.listen(3000, () => {
+  console.log("Example app listening on port 3000!");
+});

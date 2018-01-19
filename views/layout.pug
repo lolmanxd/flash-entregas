@@ -46,9 +46,9 @@ html(lang="en")
               span.white-text.name John Doe
             a(href="#!email")
               span.white-text.email jdandturk@gmail.com
-          include sidemenu-adm.pug
-    main
-      | #{main}
+          block sidenav
+    main.container
+      block content
     footer.page-footer.blue-grey.darken-4
       .footer-copyright
         .container

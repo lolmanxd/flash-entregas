@@ -19,7 +19,9 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script src="homeScripts.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB00C6fRs5Cw4xkXReSHDtrTndYuEvR6OI&callback=initMap" async
+        defer></script>
+
     <title>Flash Entregas</title>
     <style>
         a {
@@ -38,24 +40,38 @@
         .input-field.black-text {
             height: 64px;
         }
+
+        #map {
+            width: 100%;
+            height: 600px;
+        }
     </style>
     <script>
         $(document).ready(function () {
-            $(document).ready(function () {
-                $(".parallax").parallax();
-                $("nav").addClass("grey lighten-2");
-                $("#flash-logo-peq").css("margin-top", "5px");
+            $(".parallax").parallax();
+            $("nav").addClass("grey lighten-2");
+            $("#flash-logo-peq").css("margin-top", "5px");
+            $(".parallax-container").css("height", "300px");
+            $('.modal').modal();
+            $('.carousel.carousel-slider').carousel({ fullWidth: true });
 
-                $(".datepicker").pickadate({
-                    selectMonths: true, // Creates a dropdown to control month
-                    selectYears: 15, // Creates a dropdown of 15 years to control year,
-                    today: "Hoje",
-                    clear: "Limpar",
-                    close: "Ok",
-                    closeOnSelect: false // Close upon selecting a date,
-                });
+            $(".datepicker").pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15, // Creates a dropdown of 15 years to control year,
+                today: "Hoje",
+                clear: "Limpar",
+                close: "Ok",
+                closeOnSelect: false // Close upon selecting a date,
             });
         })
+
+        function initMap() {
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            })
+        };
     </script>
 </head>
 
@@ -64,112 +80,157 @@
     <header>
 
         <!-- Navbar section-->
-        <nav>
+
+        <nav class="grey lighten-2">
             <div class="container">
-                <div class="nav-wrapper">
+                <div class="nav-wrapper row">
                     <a href="#" class="brand-logo">
                         <img id="flash-logo-peq" src="images/logo_100px.png">
                     </a>
-                    <ul id="nav-mobile" class="right">
+
+                    <ul class="right">
                         <li>
-                            <form action="/login.html" method="post" class="valign-wrapper">
-                                <div class="left">
-                                    <div class="input-field black-text left">
-                                        <input id="email" type="email" name="email" class="validate">
-                                        <label for="email">E-mail</label>
-                                    </div>
-                                    <div class="input-field black-text right">
-                                        <input id="password" type="password" name="senha" class="validate">
-                                        <label for="password">Senha</label>
-                                    </div>
-                                </div>
-                                <button class="waves-effect waves-light orange btn right" type="submit">login</button>
-                            </form>
+                            <a class="waves-effect waves-light  modal-trigger blue-text text-darken-4" href="#modal-login">LOGIN</a>
+                        </li>
+
+                        <li>
+                            <a class="waves-effect waves-light blue-text text-darken-4" href="#rastreio">RASTREAR ENCOMENDA</a>
                         </li>
                     </ul>
                 </div>
             </div>
-
         </nav>
+
+        <!-- Modal Structure -->
+        <div id="modal-login" class="modal">
+            <div class="modal-content">
+                <form action="/login.html" method="post" class="valign-wrapper">
+                    <div class="container">
+                        <div class="input-field black-text">
+                            <input id="email" type="email" name="email" class="validate">
+                            <label for="email">E-mail</label>
+                        </div>
+
+                        <div class="input-field black-text ">
+                            <input id="password" type="password" name="senha" class="validate">
+                            <label for="password">Senha</label>
+                        </div>
+                    </div>
+
+                    <footer class="modal-footer">
+                        <button class="waves-effect waves-light orange btn right" type="submit">entrar</button>
+                    </footer>
+
+                </form>
+            </div>
+        </div>
     </header>
 
     <main>
+
         <div class="parallax-container">
             <div class="parallax">
                 <img src="images/image_1440.jpg" id="img-parallax">
             </div>
         </div>
 
-        <div class="section white">
-            <div class="row container">
+        <section class="section white container">
+            <div class="row">
                 <div class="col s12 m6">
-                    <h2>Bem vindo!</h2>
-                    <p>A Flash Entregas está presente em toda a região nordesde e em constante expansão para as demais regiões!
-                        Aguarde para mais novidades.
+                    <h4>Bem vindo!</h4>
+                    <p>A Flash Entregas está presente em toda a Região Nordeste e em constante expansão para as demais regiões!
+                        <br> Aguarde para mais novidades!
                     </p>
+
+                    <img src="images/1342 squared.png" alt="" style="height:350px; width:400px">
 
                 </div>
                 <div class="col s12 m6">
-                    <h2>Cadastre-se</h2>
+                    <h4>Cadastre-se</h4>
 
-                    <for action="/login" method="post">
-                        Nome:
-                        <br>
-                        <input type="text" name="nome" class="validate">
-                        <br> Sobrenome:
-                        <br>
-                        <input type="text" name="sobrenome" class="validate">
-                        <br> Email:
-                        <br>
-                        <input type="email" name="email" class="validate">
-                        <br>Senha:
-                        <br>
-                        <input type="password" name="password" class="validate">
-                        <br> Data de nascimento:
-                        <br>
-                        <input type="text" class="datepicker">
-                        <br>
-                        <br>
+                    <form action="#">
+
+                        <div class="input-field">
+                            <input placeholder="Jonh Doe" type="text" id="nome_completo" class="validate">
+                            <label for="nome_completo">Nome Completo</label>
+                        </div>
+
+                        <div class="input-field">
+                            <input placeholder="johndoe@example.com" type="email" id="email2" class="validate">
+                            <label for="email2">E-mail</label>
+                        </div>
+
+                        <div class="input-field">
+                            <input placeholder="••••••••" type="password" id="password2fd" class="validate">
+                            <label for="password2">Senha</label>
+                        </div>
+
+                        <div class="input-field">
+                            <input placeholder="dd/mm/yyyy" id="data_nasc" type="text" class="datepicker">
+                            <label for="data_nasc">Data de Nascimento</label>
+                        </div>
+
 
                         <input class="with-gap" name="gender" type="radio" id="gender1">
                         <label for="gender1">Maculino </label>
                         <input class="with-gap" name="gender" type="radio" id="gender2">
                         <label for="gender2">Feminino </label>
-                        <input class="with-gap" name="gender" type="radio" id="gender3">
-                        <label for="gender3">Outro</label>
                         <br>
                         <br>
-                        <button type="submit" class="btn waves-effect waves-light" action="#">Cadastrar
+                        <button type="submit" class="btn waves-effect orange waves-light" action="#">Cadastrar
                             <i class="material-icons right">send</i>
                         </button>
-                        </form>
+                    </form>
                 </div>
+            </div>
+        </section>
+
+        <div class="parallax-container">
+            <div class="parallax">
+                <img src="images/1202.jpg" id="">
             </div>
         </div>
 
+        <section class="section grey lighten-3" id="rastreio">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m12">
+                        <h4>Rastreio de Encomendas</h4>
+                        <p>Insira o código de rastreio</p>
+                        <div class="input-field">
+                            <input type="text">
+                            <label>Código de Rastreio</label>
+                        </div>
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
     </main>
-    <footer class="page-footer">
-        <div class="container">
+    <footer class="page-footer  grey lighten-2">
+        <div class="container ">
             <div class="row">
                 <div class="col m6 s12">
-                    <h5 class="white-text">Devs:</h5>
-                    <p class="grey-text text-lighten-4">Alessandro Lima</p>
-                    <p class="grey-text text-lighten-4">Anderson Silva</p>
+                    <h5 class="black-text">Devs:</h5>
+                    <p class="grey-text text-darken-3">Alessandro Lima</p>
+                    <p class="grey-text text-darken-3">Anderson Silva</p>
                 </div>
                 <div class="col m6 s12">
-                    <h5 class="white-text">Links</h5>
+                    <h5 class="black-text">Links</h5>
                     <ul>
                         <li>
-                            <a class="grey-text text-lighten-3" href="https://github.com/spider8/flash-entregas.git">GitHub</a>
+                            <a class="grey-text text-darken-3" href="https://github.com/spider8/flash-entregas.git">GitHub</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="footer-copyright">
-            <div class="container">
+            <div class="container grey-text text-darken-3">
                 © 2018 Copyright, All rights reserved.
-                <a class="grey-text text-lighten-4 right" href="#!">MIT License.</a>
+                <a class="grey-text text-darken-3 right" href="#!">MIT License.</a>
             </div>
         </div>
     </footer>

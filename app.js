@@ -40,6 +40,10 @@ app.post("/cadastro", function(req, res) {
   );
 });
 
+app.get("/clientes", (req, res) => {
+  res.render("clientes");
+});
+
 app.post("/login", (req, res) => {
   const { email, senha } = req.body;
 
@@ -59,7 +63,7 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/dashboard.html", function(req, res) {
-  res.render("dashboard", { main: "Ola" });
+  res.render("clientes", {});
 });
 
 app.listen(3000, () => {

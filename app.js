@@ -63,7 +63,7 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/dashboard.html", function(req, res) {
-  res.render("dashboard", {});
+  res.render("clientes", {});
 });
 
 app.listen(3000, () => {

@@ -15,21 +15,41 @@ html(lang="en")
     title Flash Entregas
     
     style.
+      header, main, footer {
+        padding-left: 300px;
+      }
+
+      @media only screen and (max-width : 992px) {
+          header, main, footer {
+          padding-left: 0;
+        }
+      }
+
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
       main {
-      height: 532px;
-      border: o;
+        flex: 1 0 auto;
       }
+    
+    script.
+      $("document").ready(()=>{
+        // Initialize collapse button
+        $(".button-collapse").sideNav();
+        // Initialize collapsible (uncomment the line below if you use the dropdown variation)
+        //$('.collapsible').collapsible();
+      })
       
-      header,
-      main,
-      footer {
-      padding-left: 300px;
-      }
-  
+
   body
     header
       nav.blue-grey.darken-4
         .nav-wrapper
+          a.button-collapse(href="#" data-activates="nav-mobile") 
+            i.material-icons menu
           a.page-title.brand-logo.center Flash Entregas
           ul.right
             li
@@ -47,7 +67,7 @@ html(lang="en")
             a(href="#!email")
               span.white-text.email jdandturk@gmail.com
           block sidenav
-    main.container
+    main.grey.lighten-2
       block content
     footer.page-footer.blue-grey.darken-4
       .footer-copyright

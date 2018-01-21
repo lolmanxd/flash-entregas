@@ -3,21 +3,25 @@ extends layout.pug
 block sidenav
     include sidenav-adm.pug
 
+mixin search-input()
+    form.wrapper-search-input(action="")
+      input(type="text")
+      button.btn.waves-effect.waves-light.orange(type="submit" name="action")
+        | Buscar
+        i.material-icons.right search
+
 block content
     .row
       .col.s12.m12
-        ul.collapsible.popout(data-collapsible="accordion")
-          li#cadastro-ecomendas
-            .collapsible-header
-              i.material-icons card_giftcard
-              | Cadastrar Encomenda
-            .collapsible-body
+        .card
+          .card-content
+              span.card-title Cadastrar encomendas 
               form(action="")
-                div(row="row")
+                .row
                   .input-field.black-text.col.m9
                     input#cliente(type="text" data-length="14")
                     label(for="cliente") Cliente
-                div(row="row")
+                .row
                   .input-field.black-text.col.m9
                     input#destinatario(type="text" data-length="25")
                     label(for="destinatario") Destinatário
@@ -42,7 +46,7 @@ block content
                   .input-field.black-text.col.m2
                     input#uf(type="text")
                     label(for="uf") UF
-                div(row="row")
+                .row
                   .input-field.black-text.col.m2
                     input#peso(type="number" min="0")
                     label(for="peso") Peso
@@ -56,54 +60,63 @@ block content
                 button.btn.waves-effect.waves-light.orange(type="submit" name="action")
                   | CADASTRAR
                   i.material-icons.right send
-          li#atualizar-encomenda
-            .collapsible-header
-              i.material-icons border_color
-              | Atualizar Encomenda
-            .collapsible-body
-              form(action="")
-                .row
-                  .input-field
-                    input#cod-encomenda(type="text")
-                    label(for="cod-encomenda") Código da Encomenda
-                    button.waves-effect.waves-light.orange.btn.right(type="submit")
-                      | BUSCAR
-                      i.material-icons search
-          li#cancelar-encomenda
-            .collapsible-header
-              i.material-icons delete
-              | Cancelar Encomendas
-            .collapsible-body
-              form(action="")
-                .row
-                  .input-field
-                    input#cod-encomenda(type="text")
-                    label(for="cod-encomenda") Código da Encomenda
-                    button.waves-effect.waves-light.orange.btn.right(type="submit")
-                      | BUSCAR
-                      i.material-icons search
-          li#rastrear-encomenda
-            .collapsible-header
-              i.material-icons place
-              | Rastrear Encomendas
-            .collapsible-body
-              form(action="")
-                .row
-                  .input-field
-                    input#cod-encomenda(type="text")
-                    label(for="cod-encomenda") Código da Encomenda
-                    button.waves-effect.waves-light.orange.btn.right(type="submit")
-                      | BUSCAR
-                      i.material-icons search
+
+    .row
+      .col.s12.m12
+        .card
+          .card-content
+              span.card-title Atualizar encomenda
+              +search-input()
+              ul.collapsible(data-collapsible="accordion")
+                li
+                  .collapsible-header Ola
+                  .collapsible-body Corpo
+
+    .row
+      .col.s12.m12
+        .card
+          .card-content
+              span.card-title Cancelar encomenda
+              +search-input()
+
+    .row
+      .col.s12.m12
+        .card
+          .card-content
+              span.card-title Rastrear encomenda
+              +search-input()
+              #map
+
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB00C6fRs5Cw4xkXReSHDtrTndYuEvR6OI&callback=initMap" async="" defer="")
     script.
       $(document).ready(function () {
-      $('.collapsible').collapsible();
-      $('input#destinatario', 'input#logradouro', 'input#descricao').characterCounter();
+        $('.collapsible').collapsible();
+        $('input#destinatario', 'input#logradouro', 'input#descricao').characterCounter();
+        function teste(){console.log("FOi")}
       });
+      function initMap() {
+            // Create a map object and specify the DOM element for display.
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.397, lng: 150.644 },
+                zoom: 8
+            });
+        };
+
     style.
       .collapsible-header {
-      color: black;
+        color: black;
       }
+
       .collapsible-body {
-      background-color: white;
+        background-color: white;
+      }
+
+      #map {
+        width: 100%;
+        height: 600px;
+      }
+
+      .wrapper-search-input{
+          display: flex;
+          flex-direction: row;
       }

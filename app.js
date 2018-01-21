@@ -66,6 +66,10 @@ app.get("/dashboard.html", function(req, res) {
   res.render("clientes", {});
 });
 
+app.get("/encomendas.html", function(req, res) {
+  res.render("encomendas", {});
+});
+
 app.listen(3000, () => {
   console.log("Example app listening on port 3000!");
 });

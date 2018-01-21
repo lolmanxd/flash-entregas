@@ -53,10 +53,6 @@ app.post("/cadastro", function (req, res) {
   );
 });
 
-app.get("/clientes", (req, res) => {
-  res.render("clientes");
-});
-
 app.post("/login", (req, res) => {
   const { email, senha } = req.body;
 
@@ -75,12 +71,28 @@ app.post("/login", (req, res) => {
   );
 });
 
-app.get("/dashboard.html", function (req, res) {
+app.get("/clientes.html", function (req, res) {
   res.render("clientes", {});
 });
 
 app.get("/encomendas.html", function (req, res) {
   res.render("encomendas", {});
+});
+
+app.get("/funcionarios.html", function (req, res) {
+  res.render("funcionarios", {});
+});
+
+app.get("/veiculos.html", function (req, res) {
+  res.render("/veiculos", {});
+});
+
+app.get("/relatorio.html", function (req, res) {
+  res.render("relatorio", {});
+});
+
+app.get("/unidade_tratamento.html", function (req, res) {
+  res.render("unidade_tratamento", {});
 });
 
 app.listen(3001, () => {

@@ -4,4 +4,17 @@ block sidenav
   include sidenav-adm.pug
 
 block content
-  include clientes.html
+  .card
+    .card-content
+      span.card-title Consultar Clientes
+        form.search-wrapper(action="/buscar-clientes" method="get")
+          input(type="text" name="busca")
+          button.btn.waves-effect.orange.waves-light(type="submit")
+            | Buscar
+            i.material-icons.right send
+      if res
+        ul
+          each val in res
+            li= val.nome
+      else
+        p Nada ainda.

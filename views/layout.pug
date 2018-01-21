@@ -46,11 +46,12 @@ html(lang="en")
 
   body
     header
-      nav.blue-grey.darken-4
+      nav.grey
         .nav-wrapper
           a.button-collapse(href="#" data-activates="nav-mobile") 
             i.material-icons menu
-          a.page-title.brand-logo.center Flash Entregas
+          a.brand-logo.center(href="#")
+            img#flash-logo-peq(src="images/logo_100px.png")
           ul.right
             li
               a(href="/")
@@ -69,7 +70,7 @@ html(lang="en")
           block sidenav
     main.grey.lighten-2
       block content
-    footer.page-footer.blue-grey.darken-4
+    footer.page-footer.grey
       .footer-copyright
         .container
           | © 2018 Copyright, All rights reserved.

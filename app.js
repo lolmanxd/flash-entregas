@@ -2,6 +2,7 @@ const path = require("path");
 var mysql = require("mysql");
 var bodyParser = require("body-parser");
 var morgan = require("morgan");
+var pug = require("pug");
 
 const express = require("express");
 const app = express();
@@ -9,6 +10,7 @@ const app = express();
 var db = mysql.createConnection({
   host: "localhost",
   user: "root",
+  port: 3000,
   password: "root",
   database: "flash"
 });
@@ -21,11 +23,22 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.resolve("public/login.html"));
 });
 
-app.post("/cadastro", function(req, res) {
+app.get("/buscar-clientes", function (req, res) {
+  const { busca } = req.query;
+  console.log(busca);
+  db.query(`select * from user where nome like '%${busca}%'`, (error, result, field) => {
+    console.log(result);
+    if (error) {
+      res.send(error);
+    } else res.render("clientes", { res: result });
+  })
+})
+
+app.post("/cadastro", function (req, res) {
   const { email, senha, nome, data_nascimento } = req.body;
   db.query(
     "insert into user values(?, ?, ?, ?)",
@@ -50,7 +63,7 @@ app.post("/login", (req, res) => {
   db.query(
     "select * from user where email = ? and senha = ?",
     [email, senha],
-    function(error, results, fields) {
+    function (error, results, fields) {
       if (error) {
         res.send("Erro ao realizar consulta.");
       }
@@ -62,10 +75,10 @@ app.post("/login", (req, res) => {
   );
 });
 
-app.get("/dashboard.html", function(req, res) {
+app.get("/dashboard.html", function (req, res) {
   res.render("clientes", {});
 });
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("Example app listening on port 3000!");
 });

@@ -1,0 +1,22 @@
+extends layout.pug
+
+block sidenav
+  include sidenav-adm.pug
+
+block content
+  .row
+    .col.s12.m12
+      .card
+        .card-content
+          span.card-title Consultar Clientes
+            form.search-wrapper(action="/buscar-clientes" method="get")
+              input(type="text" name="busca")
+              button.btn.waves-effect.orange.waves-light(type="submit")
+                | Buscar
+                i.material-icons.right send
+          if query.length
+            ul
+              each val in query
+                li= val.nome
+          else
+            p Nada ainda.

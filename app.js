@@ -32,11 +32,10 @@ app.get("/", function(req, res) {
 
 app.get("/buscar-clientes", function(req, res) {
   const { busca } = req.query;
-  console.log(busca);
+
   db.query(
     `select * from user where nome like '%${busca}%'`,
     (error, result, field) => {
-      console.log(result);
       if (error) {
         res.send(error);
       } else res.render("clientes", { res: result });
@@ -84,7 +83,7 @@ app.post("/login", (req, res) => {
       if (error) {
         res.send("Erro ao realizar consulta.");
       }
-      console.log(results);
+
       if (results.length != 0) {
         res
           .cookie("email", email)
@@ -101,31 +100,32 @@ app.get("/dashboard.html", function(req, res) {
 });
 
 app.get("/clientes.html", function(req, res) {
-  res.render("clientes", {});
+  console.log("Avatar: ", req.cookies.avatar);
+  res.render("clientes", { cookies: req.cookies, query: {} });
 });
 
 app.get("/encomendas.html", function(req, res) {
   db.query("select * from encomenda", function(error, results, fields) {
     if (error) {
       res.send("Erro ao realizar consulta.");
-    } else res.render("encomendas", { query: results });
+    } else res.render("encomendas", { cookies: req.cookies, query: results });
   });
 });
 
 app.get("/funcionarios.html", function(req, res) {
-  res.render("funcionarios", {});
+  res.render("funcionarios", { cookies: req.cookies, query: {} });
 });
 
 app.get("/veiculos.html", function(req, res) {
-  res.render("/veiculos", {});
+  res.render("veiculos", { cookies: req.cookies, query: {} });
 });
 
 app.get("/relatorio.html", function(req, res) {
-  res.render("relatorio", {});
+  res.render("relatorio", { cookies: req.cookies, query: {} });
 });
 
 app.get("/unidade_tratamento.html", function(req, res) {
-  res.render("unidade_tratamento", {});
+  res.render("unidades-tratamentos", { cookies: req.cookies, query: {} });
 });
 
 app.listen(3001, () => {

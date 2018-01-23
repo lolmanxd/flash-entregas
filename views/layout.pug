@@ -62,11 +62,11 @@ html(lang="en")
             .background
               img(src="https://images.adsttc.com/media/images/517d/45a3/b3fc/4b83/4200/0014/large_jpg/IMG_6138.jpg")
             a(href="#!user")
-              img.circle(src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/111863/profile/profile-512.jpg")
+              img.circle(src=cookies.avatar)
             a(href="#!name")
-              span.white-text.name John Doe
+              span.white-text.name #{cookies.nome}
             a(href="#!email")
-              span.white-text.email jdandturk@gmail.com
+              span.white-text.email #{cookies.email}
           block sidenav
     main.grey.lighten-2
       block content

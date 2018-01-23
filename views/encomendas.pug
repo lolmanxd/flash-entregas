@@ -68,9 +68,10 @@ block content
               span.card-title Atualizar encomenda
               +search-input()
               ul.collapsible(data-collapsible="accordion")
-                li
-                  .collapsible-header Ola
-                  .collapsible-body Corpo
+                each encomenda in query
+                  li
+                    .collapsible-header= encomenda.cliente
+                    .collapsible-body= encomenda
 
     .row
       .col.s12.m12
@@ -92,7 +93,6 @@ block content
       $(document).ready(function () {
         $('.collapsible').collapsible();
         $('input#destinatario', 'input#logradouro', 'input#descricao').characterCounter();
-        function teste(){console.log("FOi")}
       });
       function initMap() {
             // Create a map object and specify the DOM element for display.

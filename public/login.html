@@ -104,7 +104,7 @@
         <!-- Modal Structure -->
         <div id="modal-login" class="modal">
             <div class="modal-content">
-                <form action="/login.html" method="post" class="valign-wrapper">
+                <form action="/login" method="post" class="valign-wrapper">
                     <div class="container">
                         <div class="input-field black-text">
                             <input id="email" type="email" name="email" class="validate">
@@ -118,7 +118,7 @@
                     </div>
 
                     <footer class="modal-footer">
-                        <button class="waves-effect waves-light orange btn right" type="submit">entrar</button>
+                        <button class="waves-effect waves-light orange btn right" type="submit">Entrar</button>
                     </footer>
 
                 </form>
@@ -148,7 +148,7 @@
                 <div class="col s12 m6">
                     <h4>Cadastre-se</h4>
 
-                    <form action="#">
+                    <form action="/cadastro" method="post">
 
                         <div class="input-field">
                             <input placeholder="Jonh Doe" name="nome" type="text" id="nome_completo" class="validate">
@@ -170,6 +170,10 @@
                             <label for="data_nasc">Data de Nascimento</label>
                         </div>
 
+                        <div class="input-field">
+                            <input placeholder="11 12349-6789" name="telefone" type="number" id="telefone" class="validate">
+                            <label for="password2">Telefone</label>
+                        </div>
 
                         <input class="with-gap" name="gender" type="radio" id="gender1">
                         <label for="gender1">Maculino </label>

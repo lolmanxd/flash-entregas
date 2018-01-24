@@ -5,6 +5,7 @@ var morgan = require("morgan");
 var pug = require("pug");
 var faker = require("faker");
 var cookieParser = require("cookie-parser");
+var cpf = require("gerador-validador-cpf");
 
 const express = require("express");
 const app = express();
@@ -35,7 +36,7 @@ app.get("/popular-banco", function(req, res) {
     nome: faker.name.findName(),
     avatar: faker.internet.avatar(),
     tipo_acesso: "fisica",
-    cpf: faker.random.number(),
+    cpf: cpf.generate(),
     sexo: "m",
     data_nascimento: faker.date.past(),
     endereco
@@ -75,12 +76,22 @@ app.get("/", function(req, res) {
   res.sendFile(path.resolve("public/login.html"));
 });
 
-app.get("/buscar-clientes", function(req, res) {
+app.get("/buscar-nome", function(req, res) {
   const { busca } = req.query;
 
   db.query(
-    "select * from usuario",
-    //`select * from usuario where nome like '%${busca}%'`,
+    `select * from usuario where nome like '%${busca}%'`,
+    (error, result, field) => {
+      if (error) {
+        res.send(error);
+      } else res.render("clientes", { cookies: req.cookies, query: result });
+    }
+  );
+});
+
+app.get("/listar-todos", function(req, res) {
+  db.query(
+    "select * from usuario, endereco where usuario.endereco = endereco.id",
     (error, result, field) => {
       if (error) {
         res.send(error);
@@ -146,7 +157,6 @@ app.get("/dashboard.html", function(req, res) {
 });
 
 app.get("/clientes.html", function(req, res) {
-  console.log("Avatar: ", req.cookies.avatar);
   res.render("clientes", { cookies: req.cookies, query: {} });
 });
 

@@ -9,11 +9,16 @@ block content
       .card
         .card-content
           span.card-title Consultar Clientes
-            form.wrapper-search-input(action="/buscar-clientes" method="get")
+            form.wrapper-search-input(action="/buscar-nome" method="get")
               input(type="text" name="busca")
               button.btn.waves-effect.orange.waves-light(type="submit")
                 | Buscar
                 i.material-icons.right send
+            form(action="/listar-todos" method="get")
+              button.btn.waves-effect.orange.waves-light
+                | Listar todos
+                i.material-icons.right send
+
           if query.length
         ul.collapsible(data-collapsible="accordion")
           each user in query
@@ -26,38 +31,50 @@ block content
                     p
                     | #{user.email}
                     br
-                    | CPF
+                    | #{user.cpf}
               .collapsible-body
                 form(action="")
-                  .row
-                    .input-field.black-text.col.m9
-                      input#nome(type="text" data-length="14" value=user.nome)
-                      label(for="nome")
-                      
-                  .row
-                    .input-field.black-text.col.m9
+                  .row                     
+                    .input-field.black-text.col.m6.s12
                       input#cliente(type="email" data-length="14" value=user.email)
                       label(for="email") Email
 
-                  .row
-                    .input-field.black-text.col.m6.s6
+                    .input-field.black-text.col.m6.s12
                       input#senha1(type="password" value=user.senha)
                       label(for="senha1") Senha
+                    
+                    .input-field.black-text.col.m6.s12
+                      input#nome(type="text" data-length="14" value=user.nome)
+                      label(for="nome") Nome
 
-                  .row
-                    .input-field.black-text.col.m9
+                    .input-field.black-text.col.m6.s12
                       input#cpf(type="text" data-length="14" value=user.cpf)
                       label(for="cpf") CPF
-                  
-                  .row
-                    .input-field.black-text.col.m9
+                    
+                    .input-field.black-text.col.m6.s12
                       input#cep(type="text" data-length="14" value=user.cep)
                       label(for="cep") CEP
 
-                  .row
-                    .input-field.black-text.col.m9
-                      input#cliente(type="text" data-length="14" value=user.logradouro)
-                  
+                    .input-field.black-text.col.m6.s12
+                      input#logradouro(type="text" data-length="14" value=user.logradouro)
+                      label(for="lagradouro") Logradouro
+                    
+                    .input-field.black-text.col.m6.s12
+                      input#bairro(type="text" data-length="14" value=user.bairro)
+                      label(for="bairro") Bairro
+                    
+                    .input-field.black-text.col.m6.s12
+                      input#cidade(type="text" data-length="14" value=user.cidade)
+                      label(for="cidade") Cidade
+                    
+                    .input-field.black-text.col.m6.s12
+                      input#estado(type="text" data-length="14" value=user.estado)
+                      label(for="estado") Estado
+
+                    .input-field.black-text.col.m6.s12
+                      input#telefone(type="text" data-length="14" value=user.telefone)
+                      label(for="telefone") Telefone
+
                   button.btn.waves-effect.waves-light.orange(type="submit" name="action")
                     | Atualizar
                     i.material-icons.right send

@@ -26,6 +26,51 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.get("/popular-banco", function(req, res) {
+  faker.locale = "pt_BR";
+
+  user = endereco => ({
+    email: faker.internet.email(),
+    senha: faker.internet.password(),
+    nome: faker.name.findName(),
+    avatar: faker.internet.avatar(),
+    tipo_acesso: "fisica",
+    cpf: faker.random.number(),
+    sexo: "m",
+    data_nascimento: faker.date.past(),
+    endereco
+  });
+
+  endereco = () => ({
+    id: faker.random.number(),
+    logradouro: faker.address.streetName(),
+    cep: faker.address.zipCode(),
+    cidade: faker.address.city(),
+    bairro: faker.address.city(),
+    estado: faker.address.state(),
+    telefone: faker.phone.phoneNumber()
+  });
+
+  db.query(
+    "insert into endereco values(?, ?, ?, ?, ?, ?, ?)",
+    Object.values(endereco()),
+    (error, result, field) => {
+      if (error) {
+        res.send(error);
+      } else
+        db.query(
+          "insert into usuario values(?, ?, ?, ?, ?, ?, ?, ?, ?)",
+          Object.values(user(result.insertId)),
+          (error, result, field) => {
+            if (error) {
+              res.send(error);
+            } else res.send(result);
+          }
+        );
+    }
+  );
+});
+
 app.get("/", function(req, res) {
   res.sendFile(path.resolve("public/login.html"));
 });

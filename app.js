@@ -34,11 +34,12 @@ app.get("/buscar-clientes", function(req, res) {
   const { busca } = req.query;
 
   db.query(
-    `select * from user where nome like '%${busca}%'`,
+    "select * from usuario",
+    //`select * from usuario where nome like '%${busca}%'`,
     (error, result, field) => {
       if (error) {
         res.send(error);
-      } else res.render("clientes", { res: result });
+      } else res.render("clientes", { cookies: req.cookies, query: result });
     }
   );
 });

@@ -9,14 +9,69 @@ block content
       .card
         .card-content
           span.card-title Consultar Clientes
-            form.search-wrapper(action="/buscar-clientes" method="get")
+            form.wrapper-search-input(action="/buscar-clientes" method="get")
               input(type="text" name="busca")
               button.btn.waves-effect.orange.waves-light(type="submit")
                 | Buscar
                 i.material-icons.right send
           if query.length
-            ul
-              each val in query
-                li= val.nome
-          else
-            p Nada ainda.
+        ul.collapsible(data-collapsible="accordion")
+          each user in query
+            li
+              .collapsible-header
+                .avatar
+                  img.circle(src=user.avatar alt="")
+                .info
+                    span #{user.nome}
+                    p
+                    | #{user.email}
+                    br
+                    | CPF
+              .collapsible-body
+                form(action="")
+                  .row
+                    .input-field.black-text.col.m9
+                      input#nome(type="text" data-length="14" value=user.nome)
+                      label(for="nome")
+                      
+                  .row
+                    .input-field.black-text.col.m9
+                      input#cliente(type="email" data-length="14" value=user.email)
+                      label(for="email") Email
+
+                  .row
+                    .input-field.black-text.col.m6.s6
+                      input#senha1(type="password" value=user.senha)
+                      label(for="senha1") Senha
+
+                  .row
+                    .input-field.black-text.col.m9
+                      input#cpf(type="text" data-length="14" value=user.cpf)
+                      label(for="cpf") CPF
+                  
+                  .row
+                    .input-field.black-text.col.m9
+                      input#cep(type="text" data-length="14" value=user.cep)
+                      label(for="cep") CEP
+
+                  .row
+                    .input-field.black-text.col.m9
+                      input#cliente(type="text" data-length="14" value=user.logradouro)
+                  
+                  button.btn.waves-effect.waves-light.orange(type="submit" name="action")
+                    | Atualizar
+                    i.material-icons.right send
+
+  style.
+    .wrapper-search-input{
+      display: flex;
+      flex-direction: row;
+    }
+
+    .avatar img{
+      height: 55px;
+    }
+
+    .info{
+      padding-left: 15px;
+    }

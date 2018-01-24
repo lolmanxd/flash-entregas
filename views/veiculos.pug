@@ -20,73 +20,26 @@ block content
                 .row
                   .input-field.black-text.col.m9
                     input#cliente(type="text" data-length="14")
-                    label(for="cliente") Cliente
+                    label(for="cliente") Placa
                 .row
                   .input-field.black-text.col.m9
                     input#destinatario(type="text" data-length="25")
-                    label(for="destinatario") Destinatário
+                    label(for="destinatario") Ano
                 .row
                   .input-field.black-text.col.m4
                     input#cep(type="text")
-                    label(for="cep") CEP
+                    label(for="cep") Modelo
                 .row
                   .input-field.black-text.col.m6
                     input#logradouro(type="text" data-length="60")
-                    label(for="logradouro") Logradouro
+                    label(for="logradouro") Carga maxima
                   .input-field.black-text.col.m2
                     input#numero(type="number" min="1")
-                    label(for="numero") nº
-                .row
-                  .input-field.black-text.col.m4
-                    input#bairro(type="text")
-                    label(for="bairro") Bairro
-                  .input-field.black-text.col.m4
-                    input#cidade(type="text")
-                    label(for="cidade") Cidade
-                  .input-field.black-text.col.m2
-                    input#uf(type="text")
-                    label(for="uf") UF
-                .row
-                  .input-field.black-text.col.m2
-                    input#peso(type="number" min="0")
-                    label(for="peso") Peso
-                  .input-field.black-text.col.m2
-                    input#volume(type="number" min="0")
-                    label(for="volume") Volume
-                .row
-                  .input-field.black-text.col.m12
-                    input#descricao(type="text" data-length="100")
-                    label(for="descricao") Descrição
+                    label(for="numero") Volume maximo
+                
                 button.btn.waves-effect.waves-light.orange(type="submit" name="action")
                   | CADASTRAR
                   i.material-icons.right send
-
-    .row
-      .col.s12.m12
-        .card
-          .card-content
-              span.card-title Atualizar veiculo
-              +search-input()
-              ul.collapsible(data-collapsible="accordion")
-                each encomenda in query
-                  li
-                    .collapsible-header= encomenda.cliente
-                    .collapsible-body= encomenda
-
-    .row
-      .col.s12.m12
-        .card
-          .card-content
-              span.card-title Cancelar encomenda
-              +search-input()
-
-    .row
-      .col.s12.m12
-        .card
-          .card-content
-              span.card-title Rastrear encomenda
-              +search-input()
-              #map
 
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB00C6fRs5Cw4xkXReSHDtrTndYuEvR6OI&callback=initMap" async="" defer="")
     script.

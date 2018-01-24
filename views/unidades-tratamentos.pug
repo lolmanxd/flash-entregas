@@ -15,20 +15,17 @@ block content
       .col.s12.m12
         .card
           .card-content
-              span.card-title Cadastrar encomendas 
+              span.card-title Cadastrar Unidade tratamento
               form(action="")
                 .row
                   .input-field.black-text.col.m9
                     input#cliente(type="text" data-length="14")
-                    label(for="cliente") Cliente
-                .row
-                  .input-field.black-text.col.m9
-                    input#destinatario(type="text" data-length="25")
-                    label(for="destinatario") Destinatário
+                    label(for="cliente") Administrador
+               
                 .row
                   .input-field.black-text.col.m4
                     input#cep(type="text")
-                    label(for="cep") CEP
+                    label(for="cep") Cep
                 .row
                   .input-field.black-text.col.m6
                     input#logradouro(type="text" data-length="60")
@@ -46,47 +43,12 @@ block content
                   .input-field.black-text.col.m2
                     input#uf(type="text")
                     label(for="uf") UF
-                .row
-                  .input-field.black-text.col.m2
-                    input#peso(type="number" min="0")
-                    label(for="peso") Peso
-                  .input-field.black-text.col.m2
-                    input#volume(type="number" min="0")
-                    label(for="volume") Volume
-                .row
-                  .input-field.black-text.col.m12
-                    input#descricao(type="text" data-length="100")
-                    label(for="descricao") Descrição
+              
                 button.btn.waves-effect.waves-light.orange(type="submit" name="action")
                   | CADASTRAR
                   i.material-icons.right send
 
-    .row
-      .col.s12.m12
-        .card
-          .card-content
-              span.card-title Atualizar encomenda
-              +search-input()
-              ul.collapsible(data-collapsible="accordion")
-                each encomenda in query
-                  li
-                    .collapsible-header= encomenda.cliente
-                    .collapsible-body= encomenda
 
-    .row
-      .col.s12.m12
-        .card
-          .card-content
-              span.card-title Cancelar encomenda
-              +search-input()
-
-    .row
-      .col.s12.m12
-        .card
-          .card-content
-              span.card-title Rastrear encomenda
-              +search-input()
-              #map
 
     script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB00C6fRs5Cw4xkXReSHDtrTndYuEvR6OI&callback=initMap" async="" defer="")
     script.

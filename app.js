@@ -100,6 +100,30 @@ app.get("/listar-todos", function(req, res) {
   );
 });
 
+app.get("/listar-todos-funcionarios", function(req, res) {
+  db.query(
+    "select * from usuario, endereco where usuario.tipo_acesso = 'funcionario'",
+    (error, result, field) => {
+      if (error) {
+        res.send(error);
+      } else res.render("clientes", { cookies: req.cookies, query: result });
+    }
+  );
+});
+
+app.get("/buscar-nome-funcionario", function(req, res) {
+  const { busca } = req.query;
+
+  db.query(
+    `select * from usuario where nome like '%${busca}% and tipo_acesso = "funcionario"'`,
+    (error, result, field) => {
+      if (error) {
+        res.send(error);
+      } else res.render("clientes", { cookies: req.cookies, query: result });
+    }
+  );
+});
+
 app.post("/cadastro", function(req, res) {
   const { email, senha, nome, data_nascimento, telefone } = req.body;
   db.query(
